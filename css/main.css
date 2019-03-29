@@ -77,7 +77,6 @@ body {
  * ------------------------------------------------------------------- */
 a,
 a:visited {
-    color: #1237B1;
     border-bottom: 1px solid transparent;
     -moz-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
@@ -2502,11 +2501,6 @@ footer {
     background: #000000;
 }
 
-footer a,
-footer a:visited {
-    color: #000000;
-}
-
 footer [class*="col-"] {
     margin-bottom: 1.2rem;
     color: white;
@@ -2537,7 +2531,6 @@ footer ul li {
 
 .footer-main ul a,
 .footer-main ul a:visited {
-    color: #8E8E8E;
     border: none;
 }
 

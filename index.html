@@ -53,6 +53,8 @@
 
     <!-- CSS
   ================================================== -->
+    <!-- Social Share Kit CSS -->
+    <link rel="stylesheet" href="css/social-share-kit.css" type="text/css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
@@ -95,6 +97,8 @@
     <script src="js/modernizr.js"></script>
     <script src="js/pace.min.js"></script>
     <script src="js/api.js"></script>
+    <!-- Social Share Kit JS -->
+    <script type="text/javascript" src="js/social-share-kit.js"></script>
 
     <!-- favicons
      ================================================== -->
@@ -159,6 +163,17 @@
                     a single graphical interface.
                 </p>
 
+                <div class="ssk-group ssk-lg">
+                    <a href="" class="ssk ssk-facebook" data-ssk-ready="true"></a>
+                    <a href="" class="ssk ssk-twitter" data-ssk-ready="true"></a>
+                    <a href="" class="ssk ssk-google-plus" data-ssk-ready="true"></a>
+                    <a href="" class="ssk ssk-pinterest" data-ssk-ready="true"></a>
+                    <a href="" class="ssk ssk-tumblr" data-ssk-ready="true"></a>
+                    <a href="" class="ssk ssk-vk" data-ssk-ready="true"></a>
+                    <a href="" class="ssk ssk-linkedin" data-ssk-ready="true"></a>
+                    <a href="" class="ssk ssk-email" data-ssk-ready="true"></a>
+                </div>
+
             </div> <!-- end footer-info -->
 
         </div> <!-- end row -->
@@ -187,7 +202,12 @@
     <div id="loader"></div>
 </div>
 
+<script type="text/javascript">
+    SocialShareKit.init({ forceInit: true });
+</script>
+
 <script>
+
     var grid = $('.bricks-wrapper').masonry({
         columnWidth: '.grid-sizer',
         itemSelector: '.grid-item'
