@@ -2479,7 +2479,7 @@ header .logo a {
 }
 
 @media only screen and (max-width: 400px) {
-    .bricks-wrapper .brick {
+    .bricks-wrapper .grid-item {
         width: 100% !important;
         float: none !important;
         clear: both !important;
