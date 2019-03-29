@@ -42,7 +42,7 @@ var flickrResponse = async function () {
             let content = '<article class="grid-item entry format-standard">' +
                 '<div class="entry-thumb">' +
                 '<a href="' + url + '" class="thumb-link" target="_blank">' +
-                '<img src="' + thumbnail + '" style="height: ' + measure_width + 'px; width: 100%;" alt="building">' +
+                '<img src="' + thumbnail + '" style="height: ' + measure_width + 'px; width: 100%;" alt="' + title + '">' +
                 '</a>' +
                 '</div>' +
                 '<div class="entry-text">' +
@@ -115,7 +115,7 @@ function youtubeResponse() {
             let content = '<article class="grid-item entry format-video">' +
                 '<div class="entry-thumb video-image">' +
                 '<a href="' + url + '" data-lity>' +
-                '<img src="' + thumbnail + '" style="height: ' + measure_width + 'px;" alt="building">' +
+                '<img src="' + thumbnail + '" style="height: ' + measure_width + 'px;" alt="' + title + '">' +
                 '</a>' +
                 '</div>' +
                 '<div class="entry-text">' +
@@ -158,7 +158,7 @@ function tumblrResponse() {
                 '<div class="entry-thumb">';
                 if(thumbnail) {
                     content += '<a href="' + url + '" class="thumb-link" target="_blank">' +
-                    '<img src="' + thumbnail + '" style="height: ' + measure_width + 'px;" alt="building">' +
+                    '<img src="' + thumbnail + '" style="height: ' + measure_width + 'px;" alt="' + description + '">' +
                     '</a>';
                 }
                 content += '</div>' +
