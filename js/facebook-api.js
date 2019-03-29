@@ -11,7 +11,7 @@ function getFacebookPosts(callback) {
                 var posts = data.map(post => {
                     return {
                         url: post.permalink_url,
-                        post_date: (post.created_time * 1000 + 60 * 60 * 8000),
+                        post_date: (post.created_time * 1000),
                         id: post.id
                     }
                 });

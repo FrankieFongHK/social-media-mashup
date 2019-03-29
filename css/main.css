@@ -2495,10 +2495,11 @@ header .logo a {
  *
  * ------------------------------------------------------------------- */
 footer {
-    padding-top: 9rem;
+    padding-top: 3rem;
     padding-bottom: 3rem;
     font-size: 1.5rem;
     color: #8E8E8E;
+    background: #000000;
 }
 
 footer a,
@@ -2508,12 +2509,14 @@ footer a:visited {
 
 footer [class*="col-"] {
     margin-bottom: 1.2rem;
+    color: white;
 }
 
 footer h4 {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding-bottom: 1.2rem;
     margin-bottom: 1.5rem;
+    color: white;
 }
 
 footer ul {
@@ -3319,6 +3322,16 @@ footer ul li {
 .grid-item {
     width: 24%;
     float: left;
+}
+
+.grid-sizer {
+    width: 1%;
+}
+
+@media only screen and (max-width: 960px) {
+    .grid-item {
+        width: 48%;
+    }
 }
 
 .grid-item.facebook {
