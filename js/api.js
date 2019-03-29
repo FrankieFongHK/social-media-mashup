@@ -44,6 +44,14 @@ var flickrResponse = async function () {
                 '<a href="' + url + '" class="thumb-link" target="_blank">' +
                 '<img src="' + thumbnail + '" style="height: ' + measure_width + 'px; width: 100%;" alt="' + title + '">' +
                 '</a>' +
+                '<div class="ssk-group" data-url="' + url + '">'+
+                    '<a href="" class="ssk ssk-facebook"></a>' +
+                    '<a href="" class="ssk ssk-twitter"></a>' +
+                    '<a href="" class="ssk ssk-google-plus"></a>' +
+                    '<a href="" class="ssk ssk-pinterest"></a>' +
+                    '<a href="" class="ssk ssk-tumblr"></a>' +
+                    '<a href="" class="ssk ssk-email"></a>' +
+                '</div>' +
                 '</div>' +
                 '<div class="entry-text">' +
                 '<div class="entry-header">' +
@@ -61,6 +69,7 @@ var flickrResponse = async function () {
             $('.bricks-wrapper').append(content).masonry('layout');
             $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
 
+            SocialShareKit.init({ reinitialize: true });
         });
         $('.bricks-wrapper').imagesLoaded().progress(function () {
             $('.bricks-wrapper').masonry('layout');
@@ -117,6 +126,14 @@ function youtubeResponse() {
                 '<a href="' + url + '" data-lity>' +
                 '<img src="' + thumbnail + '" style="height: ' + measure_width + 'px;" alt="' + title + '">' +
                 '</a>' +
+                '<div class="ssk-group" data-url="' + url + '">'+
+                    '<a href="" class="ssk ssk-facebook"></a>' +
+                    '<a href="" class="ssk ssk-twitter"></a>' +
+                    '<a href="" class="ssk ssk-google-plus"></a>' +
+                    '<a href="" class="ssk ssk-pinterest"></a>' +
+                    '<a href="" class="ssk ssk-tumblr"></a>' +
+                    '<a href="" class="ssk ssk-email"></a>' +
+                '</div>' +
                 '</div>' +
                 '<div class="entry-text">' +
                 '<div class="entry-header">' +
@@ -133,6 +150,8 @@ function youtubeResponse() {
 
             $('.bricks-wrapper').append(content).masonry('layout');
             $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
+
+            SocialShareKit.init({ reinitialize: true });
         })
 
     });
@@ -161,7 +180,15 @@ function tumblrResponse() {
                     '<img src="' + thumbnail + '" style="height: ' + measure_width + 'px;" alt="' + description + '">' +
                     '</a>';
                 }
-                content += '</div>' +
+                content += '<div class="ssk-group" data-url="' + url + '">'+
+                                '<a href="" class="ssk ssk-facebook"></a>' +
+                                '<a href="" class="ssk ssk-twitter"></a>' +
+                                '<a href="" class="ssk ssk-google-plus"></a>' +
+                                '<a href="" class="ssk ssk-pinterest"></a>' +
+                                '<a href="" class="ssk ssk-tumblr"></a>' +
+                                '<a href="" class="ssk ssk-email"></a>' +
+                            '</div>' +
+                '</div>' +
                 '<div class="entry-text">' +
                 '<div class="entry-header">' +
                 //'<h1 class="entry-title"><a href="' + url + '" target="_blank">' + title + '</a></h1>' +
@@ -178,11 +205,13 @@ function tumblrResponse() {
             $('.bricks-wrapper').append(content).masonry('layout');
             $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
 
+            SocialShareKit.init({ reinitialize: true });
         });
     });
     $('.bricks-wrapper').imagesLoaded().progress(function () {
         $('.bricks-wrapper').masonry('layout');
     });
+
 }
 
 function apiGetAll() {

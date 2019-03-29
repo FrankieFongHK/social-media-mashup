@@ -3335,6 +3335,20 @@ footer ul li {
     width: 100%;
 }
 
+.entry-thumb:hover .ssk-group {
+    visibility: visible;
+}
+
+.entry-thumb .ssk-group {
+    z-index: 99999;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    right: 0;
+    visibility: hidden;
+}
+
 .entry-info {
     padding: 4px;
     color: #ffffff;
