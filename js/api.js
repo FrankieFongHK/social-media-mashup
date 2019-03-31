@@ -38,11 +38,12 @@ var flickrResponse = async function () {
             var img_height = article["img_height"];
             var img_width = article["img_width"];
             var measure_width = item_width / img_width * img_height;
+            console.log('flickr: ' + item_width + '/' + img_width + '*' + img_height);
 
             let content = '<article class="grid-item entry format-standard">' +
                 '<div class="entry-thumb">' +
                 '<a href="' + url + '" class="thumb-link" target="_blank">' +
-                '<img src="' + thumbnail + '" style="height: ' + measure_width + 'px; width: 100%;" alt="' + title + '">' +
+                '<img src="' + thumbnail + '" style="width: 100%;" alt="' + title + '">' +
                 '</a>' +
                 '<div class="ssk-group" data-url="' + url + '">'+
                     '<a href="" class="ssk ssk-facebook"></a>' +
@@ -124,7 +125,7 @@ function youtubeResponse() {
             let content = '<article class="grid-item entry format-video">' +
                 '<div class="entry-thumb video-image">' +
                 '<a href="' + url + '" data-lity>' +
-                '<img src="' + thumbnail + '" style="height: ' + measure_width + 'px;" alt="' + title + '">' +
+                '<img src="' + thumbnail + '" style="alt="' + title + '">' +
                 '</a>' +
                 '<div class="ssk-group" data-url="' + url + '">'+
                     '<a href="" class="ssk ssk-facebook"></a>' +
@@ -177,7 +178,7 @@ function tumblrResponse() {
                 '<div class="entry-thumb">';
                 if(thumbnail) {
                     content += '<a href="' + url + '" class="thumb-link" target="_blank">' +
-                    '<img src="' + thumbnail + '" style="height: ' + measure_width + 'px;" alt="' + description + '">' +
+                    '<img src="' + thumbnail + '" alt="' + description + '">' +
                     '</a>';
                 }
                 content += '<div class="ssk-group" data-url="' + url + '">'+
