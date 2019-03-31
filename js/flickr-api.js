@@ -1,5 +1,5 @@
 async function getRecentPosts(){
-	return await fetch("https://api.flickr.com/services/rest/?method=flickr.photos.search&text=food&api_key=68a8deb4aba077832d5670bc7f2f361f&per_page=5&format=json&nojsoncallback=1", {
+	return await fetch("https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=food&accuracy=1&sort=date-posted-desc&safe_search=3&api_key=68a8deb4aba077832d5670bc7f2f361f&per_page=5&format=json&nojsoncallback=1", {
 		mode: 'cors'
 	}).then(function(resp){
 		return resp.json();
