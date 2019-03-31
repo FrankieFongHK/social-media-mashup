@@ -1117,10 +1117,11 @@ input::-moz-focus-inner {
 }
 
 .bricks-wrapper .grid-item {
-    box-shadow: -5px 6px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .bricks-wrapper .entry-thumb {
+    box-shadow: -7px 0px 6px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
 }
@@ -1204,6 +1205,7 @@ input::-moz-focus-inner {
 .bricks-wrapper .entry-text {
     padding: 1.2rem;
     background-color: white;
+    box-shadow: -7px 0px 6px rgba(0, 0, 0, 0.2);
 }
 
 .bricks-wrapper .entry-header .entry-title {
@@ -2448,7 +2450,7 @@ header .logo a {
 
 @media only screen and (max-width: 960px) {
     .bricks-wrapper .grid-sizer,
-    .bricks-wrapper .brick {
+    .bricks-wrapper .grid-item {
         width: 50%;
     }
 
@@ -3352,6 +3354,7 @@ footer ul li {
 .entry-info {
     padding: 4px;
     color: #ffffff;
+    box-shadow: -7px 0px 6px rgba(0, 0, 0, 0.2);
 }
 
 .entry-info.flickr {
