@@ -2470,7 +2470,7 @@ header .logo a {
     }
 
     .bricks-wrapper .grid-sizer,
-    .bricks-wrapper .brick {
+    .bricks-wrapper .grid-item {
         width: 100%;
         padding: 0 10px;
         clear: both;
