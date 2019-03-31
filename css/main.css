@@ -119,7 +119,7 @@ h1, .h01 {
 
 @media only screen and (max-width: 600px) {
     h1, .h01 {
-        font-size: 2.3rem;
+        font-size: 2.2rem;
         letter-spacing: -.07rem;
     }
 }
@@ -1662,8 +1662,8 @@ header .logo a {
     }
 
     header .logo a {
-        width: 54px;
-        height: 54px;
+        width: 50px;
+        height: 50px;
         background-size: 54px 54px;
     }
 
