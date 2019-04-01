@@ -26,10 +26,10 @@ function loadScript(url, callback) {
 include('js/timeago.min.js');
 
 var flickrResponse = function () {
-    getRecentPosts().then(flickrArticles => {
+    getRecentPosts().then(function(flickrArticles) {
         console.log('flickrResponse: %o', flickrArticles);
         var item_width = $('.bricks-wrapper').width() * 0.23;
-        flickrArticles.map(article => {
+        flickrArticles.map(function(article) {
             var title = article["title"];
             var url = article["url"];
             var thumbnail = article["thumbnail"];
