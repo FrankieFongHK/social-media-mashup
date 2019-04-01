@@ -80,7 +80,7 @@ var flickrResponse = function () {
 
 var facebookRes = function (articles) {
     console.log(articles);
-    articles.map(post => {
+    articles.map(function(post) {
         var content = '<article class="grid-item entry format-standard facebook">' +
             '<div id="fb-embed-' + post.id + '" class="entry-thumb facebook">' +
             '<fb:post id="fb-rendered-' + post.id + '" href="' + post['url'] + '" ></fb:post>' +
@@ -108,10 +108,10 @@ var facebookResponse = function () {
 };
 
 function youtubeResponse() {
-    searchYoutubePost().then(articles => {
+    searchYoutubePost().then(function(articles) {
         console.log('youtubeResponse: %o', articles);
         var item_width = $('.bricks-wrapper').width() * 0.23;
-        articles.map(article => {
+        articles.map(function(article) {
             console.log(article);
             var title = article["title"];
             var description = article["description"];
@@ -122,7 +122,7 @@ function youtubeResponse() {
             var img_width = article["width"];
             var measure_width = item_width / img_width * img_height;
 
-            let content = '<article class="grid-item entry format-video">' +
+            const content = '<article class="grid-item entry format-video">' +
                 '<div class="entry-thumb video-image">' +
                 '<a href="' + url + '" data-lity>' +
                 '<img src="' + thumbnail + '" style="alt="' + title + '">' +
@@ -163,8 +163,8 @@ function youtubeResponse() {
 
 function tumblrResponse() {
     var item_width = $('.bricks-wrapper').width() * 0.23;
-    getThumblrPost().then(articles => {
-        articles.map(article => {
+    getThumblrPost().then(function(articles) {
+        articles.map(function(article) {
             var url = article["url"];
             var thumbnail = article["thumbnail"];
             var description = article["description"];
@@ -174,7 +174,7 @@ function tumblrResponse() {
             var img_width = article["img_width"];
             var measure_width = item_width / img_width * img_height;
 
-            let content = '<article class="grid-item entry format-standard">' +
+            const content = '<article class="grid-item entry format-standard">' +
                 '<div class="entry-thumb">';
                 if(thumbnail) {
                     content += '<a href="' + url + '" class="thumb-link" target="_blank">' +
