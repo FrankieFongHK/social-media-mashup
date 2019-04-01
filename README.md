@@ -1,6 +1,5 @@
 # Social Media Mashup #
 
-## Introduction ##
 This website is a demo for social media mashup.
 
 ### What is Social Media Mashup? ###
