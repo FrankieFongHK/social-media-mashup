@@ -25,8 +25,8 @@ function loadScript(url, callback) {
 
 include('js/timeago.min.js');
 
-var flickrResponse = async function () {
-    await getRecentPosts().then(flickrArticles => {
+var flickrResponse = function () {
+    getRecentPosts().then(flickrArticles => {
         console.log('flickrResponse: %o', flickrArticles);
         var item_width = $('.bricks-wrapper').width() * 0.23;
         flickrArticles.map(article => {
@@ -78,7 +78,7 @@ var flickrResponse = async function () {
     });
 };
 
-var facebookRes = async function (articles) {
+var facebookRes = function (articles) {
     console.log(articles);
     articles.map(post => {
         var content = '<article class="grid-item entry format-standard facebook">' +
@@ -103,8 +103,8 @@ var facebookRes = async function (articles) {
     });
 };
 
-var facebookResponse = async function () {
-    await getFacebookPosts(facebookRes);
+var facebookResponse = function () {
+    getFacebookPosts(facebookRes);
 };
 
 function youtubeResponse() {
@@ -218,6 +218,6 @@ function tumblrResponse() {
 function apiGetAll() {
     loadScript('js/facebook-api.js', facebookResponse);
     loadScript('js/flickr-api.js', flickrResponse);
-    //loadScript('js/youtube-api.js', youtubeResponse);
+    loadScript('js/youtube-api.js', youtubeResponse);
     loadScript('js/tumblr-api.js', tumblrResponse);
 }

@@ -1551,17 +1551,17 @@ input::-moz-focus-inner {
 
 /* format video
  * --------------------------------------- */
-.format-video .entry-thumb a {
+.format-video .entry-thumb a:not(.ssk) {
     cursor: zoom-in;
     display: block;
     position: relative;
 }
 
-.format-video .entry-thumb a img {
+.format-video .entry-thumb a img:not(.ssk) {
     vertical-align: bottom;
 }
 
-.format-video .entry-thumb a::before {
+.format-video .entry-thumb a::before:not(.ssk) {
     content: "\e998";
     position: absolute;
     top: 50%;
