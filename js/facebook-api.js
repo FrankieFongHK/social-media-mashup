@@ -8,7 +8,7 @@ function getFacebookPosts(callback) {
             if (response && !response.error) {
                 console.log('@@ %o', response);
                 var data = response.data;
-                var posts = data.map(post => {
+                var posts = data.map(function(post) {
                     return {
                         url: post.permalink_url,
                         post_date: (post.created_time * 1000),

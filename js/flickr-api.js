@@ -8,18 +8,18 @@ async function getRecentPosts(){
         console.log('Flickr getRecentPosts: %o', photos);
 
 
-            return await Promise.all(photos.map(async (photo) => {
+            return await Promise.all(photos.map(async function(photo) {
             var article = {title: photo.title, platform: "flickr"};
 
             var photo_id = photo.id;
-            await getPhotoInfo(photo_id).then(photo_info => {
+            await getPhotoInfo(photo_id).then(function(photo_info) {
                 console.log(photo_id + "photoinfo");
                 article["post_date"] = photo_info.dateuploaded;
                 article["url"] = photo_info.urls.url[0]._content;
 								article["description"] = photo_info.description._content;
             });
 
-            await getPhotoSize(photo_id, 'Medium').then(photo_size => {
+            await getPhotoSize(photo_id, 'Medium').then(function(photo_size) {
 								if(photo_size){
 									if(photo_size.source){
 										article["thumbnail"] = photo_size.source;
@@ -58,9 +58,9 @@ async function getPhotoSize(photo_id, size) {
 	}).then(function(data){
 		var photo_sizes = data.sizes.size
 		console.log('getPhotoSize: %o', photo_sizes);
-		var result = photo_sizes.find((item, index, array) => item.label == size);
+		var result = photo_sizes.find(function(item, index, array){ item.label == size});
 		if(!result) {
-			result = photo_sizes.find((item, index, array) => item.label == "Original");
+			result = photo_sizes.find(function(item, index, array){ item.label == "Original"});
 		}
 		return result;
 	});

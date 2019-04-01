@@ -6,7 +6,7 @@ async function searchYoutubePost() {
     }).then(async function (data) {
         console.log('Youtube search: %o', data.items);
         if (data.items) {
-            return data.items.map(article => {
+            return data.items.map(function(article) {
                 var info = article.snippet;
                 var thumbnail = info['thumbnails']['high'];
                 return {

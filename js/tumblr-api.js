@@ -6,7 +6,7 @@ async function getThumblrPost() {
     }).then(async function (data) {
         var articles = data.response;
         console.log('Tumblr posts: %o', articles);
-        return articles.map(article => {
+        return articles.map(function(article) {
             var result = {
                 url: article['post_url'],
                 post_date: article['timestamp'],
