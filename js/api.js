@@ -40,7 +40,7 @@ var flickrResponse = function () {
             var measure_width = item_width / img_width * img_height;
             console.log('flickr: ' + item_width + '/' + img_width + '*' + img_height);
 
-            let content = '<article class="grid-item entry format-standard">' +
+            const content = '<article class="grid-item entry format-standard">' +
                 '<div class="entry-thumb">' +
                 '<a href="' + url + '" class="thumb-link" target="_blank">' +
                 '<img src="' + thumbnail + '" style="width: 100%;" alt="' + title + '">' +
