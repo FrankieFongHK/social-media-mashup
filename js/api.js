@@ -40,7 +40,7 @@ var flickrResponse = function () {
             var measure_width = item_width / img_width * img_height;
             console.log('flickr: ' + item_width + '/' + img_width + '*' + img_height);
 
-            const content = '<article class="grid-item entry format-standard">' +
+            var content = '<article class="grid-item entry format-standard">' +
                 '<div class="entry-thumb">' +
                 '<a href="' + url + '" class="thumb-link" target="_blank">' +
                 '<img src="' + thumbnail + '" style="width: 100%;" alt="' + title + '">' +
@@ -122,7 +122,7 @@ function youtubeResponse() {
             var img_width = article["width"];
             var measure_width = item_width / img_width * img_height;
 
-            const content = '<article class="grid-item entry format-video">' +
+            var content = '<article class="grid-item entry format-video">' +
                 '<div class="entry-thumb video-image">' +
                 '<a href="' + url + '" data-lity>' +
                 '<img src="' + thumbnail + '" style="alt="' + title + '">' +
@@ -174,7 +174,7 @@ function tumblrResponse() {
             var img_width = article["img_width"];
             var measure_width = item_width / img_width * img_height;
 
-            const content = '<article class="grid-item entry format-standard">' +
+            var content = '<article class="grid-item entry format-standard">' +
                 '<div class="entry-thumb">';
                 if(thumbnail) {
                     content += '<a href="' + url + '" class="thumb-link" target="_blank">' +
@@ -218,6 +218,6 @@ function tumblrResponse() {
 function apiGetAll() {
     loadScript('js/facebook-api.js', facebookResponse);
     loadScript('js/flickr-api.js', flickrResponse);
-    loadScript('js/youtube-api.js', youtubeResponse);
+    //loadScript('js/youtube-api.js', youtubeResponse);
     loadScript('js/tumblr-api.js', tumblrResponse);
 }

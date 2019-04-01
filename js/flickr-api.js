@@ -58,9 +58,9 @@ async function getPhotoSize(photo_id, size) {
 	}).then(function(data){
 		var photo_sizes = data.sizes.size
 		console.log('getPhotoSize: %o', photo_sizes);
-		var result = photo_sizes.find(function(item, index, array){ item.label == size});
+		var result = photo_sizes.find(function(item, index, array){return item.label == size;});
 		if(!result) {
-			result = photo_sizes.find(function(item, index, array){ item.label == "Original"});
+			result = photo_sizes.find(function(item, index, array){return item.label == "Original";});
 		}
 		return result;
 	});
