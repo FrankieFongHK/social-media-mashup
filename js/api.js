@@ -92,7 +92,7 @@ var facebookRes = async function (articles) {
         $('.bricks-wrapper').append(content).masonry('layout');
 
         console.log('width: ' + $('#fb-embed-' + post.id).width());
-        $('#fb-rendered-' + post.id).attr("data-width", $('#fb-embed-' + post.id).width());
+        //$('#fb-rendered-' + post.id).attr("data-width", $('#fb-embed-' + post.id).width());
         FB.XFBML.parse(document.getElementById('fb-embed-' + post.id), function(){
             $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
         });
