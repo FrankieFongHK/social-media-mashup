@@ -1606,20 +1606,22 @@ header a {
     header {
         height: 118px;
     }
-
 }
 
 /* -------------------------------------------------------------------
  * header logo - (_layout.css)
  * ------------------------------------------------------------------- */
 header .logo {
-    position: absolute;
+  position: absolute;
+    display: table;
+    width: 69%;
     left: 35px;
     top: 6px;
     z-index: 601;
 }
 
 header .logo a {
+    float: left;
     display: block;
     margin: 0;
     padding: 0;
@@ -1637,6 +1639,12 @@ header .logo a {
     -webkit-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
+}
+
+header .logo h1 {
+  padding-left: 0.5rem;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 /* responsive:
