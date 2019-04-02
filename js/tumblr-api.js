@@ -3,7 +3,7 @@ function getThumblrPost() {
         mode: 'cors'
     }).then(function (resp) {
         return resp.json();
-    }).then(async function (data) {
+    }).then(function (data) {
         var articles = data.response;
         console.log('Tumblr posts: %o', articles);
         return articles.map(function(article) {

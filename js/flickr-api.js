@@ -1,5 +1,5 @@
-function getRecentPosts(){
-	return fetch("https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=food&accuracy=1&sort=date-posted-desc&safe_search=3&api_key=68a8deb4aba077832d5670bc7f2f361f&per_page=5&format=json&nojsoncallback=1", {
+async function getRecentPosts(){
+	return await fetch("https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=food&accuracy=1&sort=date-posted-desc&safe_search=3&api_key=68a8deb4aba077832d5670bc7f2f361f&per_page=5&format=json&nojsoncallback=1", {
 		mode: 'cors'
 	}).then(function(resp){
 		return resp.json();
@@ -19,7 +19,7 @@ function getRecentPosts(){
 								article["description"] = photo_info.description._content;
             });
 
-            await getPhotoSize(photo_id, 'Medium').then(function(photo_size) {
+            await getPhotoSize(photo_id, 'Small').then(function(photo_size) {
 								if(photo_size){
 									if(photo_size.source){
 										article["thumbnail"] = photo_size.source;
