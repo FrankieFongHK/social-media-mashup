@@ -1,5 +1,5 @@
-async function getThumblrPost() {
-    return await fetch("https://api.tumblr.com/v2/tagged?api_key=KVrTO2UhQec9ClfuX4OTa2t2ERTU1a9bMK5hVxQj6GAk1MedAZ&tag=food&limit=5&type=photo", {
+function getThumblrPost() {
+    return fetch("https://api.tumblr.com/v2/tagged?api_key=KVrTO2UhQec9ClfuX4OTa2t2ERTU1a9bMK5hVxQj6GAk1MedAZ&tag=food&limit=5&type=photo", {
         mode: 'cors'
     }).then(function (resp) {
         return resp.json();
