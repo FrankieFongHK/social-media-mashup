@@ -83,7 +83,7 @@ var facebookRes = function (articles) {
     articles.map(function(post) {
         var content = '<article class="grid-item entry format-standard facebook">' +
             '<div id="fb-embed-' + post.id + '" class="entry-thumb facebook">' +
-            '<fb:post id="fb-rendered-' + post.id + '" href="' + post['url'] + '" ></fb:post>' +
+            '<fb:post id="fb-rendered-' + post.id + '" href="' + post['url'] + '" data-width="100%" ></fb:post>' +
             '</div>' +
             '<div class="entry-info facebook">' +
             '<img class="article-icon" src="images/ic-facebook.png" /> <span style="text-decoration:underline;">Posted</span> <b>' + timeago.format(post['post_date']) + '</b>' +
