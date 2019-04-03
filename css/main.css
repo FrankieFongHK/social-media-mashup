@@ -1561,7 +1561,7 @@ input::-moz-focus-inner {
     vertical-align: bottom;
 }
 
-.format-video .entry-thumb a::before:not(.ssk) {
+.format-video .entry-thumb a:not(.ssk)::before {
     content: "\e998";
     position: absolute;
     top: 50%;
