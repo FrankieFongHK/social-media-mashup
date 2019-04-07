@@ -1,5 +1,11 @@
 async function searchYoutubePost() {
-    return await fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCGyjORc_M0ohtmEdaqUim3xqhZAy8ExHs&part=snippet&q=food&type=video", {
+  var keyword = "food";
+  var url = new URL(location.href);
+  var s = url.searchParams.get("s");
+  if(s){
+    keyword = s;
+  }
+    return await fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCGyjORc_M0ohtmEdaqUim3xqhZAy8ExHs&part=snippet&q=" + keyword + "&type=video", {
         mode: 'cors'
     }).then(function (resp) {
         return resp.json();

@@ -216,8 +216,13 @@ function tumblrResponse() {
 }
 
 function apiGetAll() {
+  var keyword = "food";
+  var url = new URL(location.href);
+  var s = url.searchParams.get("s");
+  if(!s){
     loadScript('js/facebook-api.js', facebookResponse);
-    loadScript('js/flickr-api.js', flickrResponse);
-    loadScript('js/youtube-api.js', youtubeResponse);
-    loadScript('js/tumblr-api.js', tumblrResponse);
+  }
+  loadScript('js/flickr-api.js', flickrResponse);
+  loadScript('js/youtube-api.js', youtubeResponse);
+  loadScript('js/tumblr-api.js', tumblrResponse);
 }

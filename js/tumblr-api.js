@@ -1,5 +1,11 @@
 function getThumblrPost() {
-    return fetch("https://api.tumblr.com/v2/tagged?api_key=KVrTO2UhQec9ClfuX4OTa2t2ERTU1a9bMK5hVxQj6GAk1MedAZ&tag=food&limit=5&type=photo", {
+  var keyword = "food";
+  var url = new URL(location.href);
+  var s = url.searchParams.get("s");
+  if(s){
+    keyword = s;
+  }
+    return fetch("https://api.tumblr.com/v2/tagged?api_key=KVrTO2UhQec9ClfuX4OTa2t2ERTU1a9bMK5hVxQj6GAk1MedAZ&tag=" + keyword + "&limit=5&type=photo", {
         mode: 'cors'
     }).then(function (resp) {
         return resp.json();
