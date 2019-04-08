@@ -227,6 +227,6 @@ function apiGetAll() {
         loadScript('js/facebook-api.js', facebookResponse);
     }
     loadScript('js/flickr-api.js', flickrResponse);
-    //loadScript('js/youtube-api.js', youtubeResponse);
+    loadScript('js/youtube-api.js', youtubeResponse);
     loadScript('js/tumblr-api.js', tumblrResponse);
 }
