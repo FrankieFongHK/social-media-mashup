@@ -3,14 +3,14 @@
  *
  * ------------------------------------------------------------------- */
 
-(function ($) {
+(function($) {
 
     "use strict";
 
     var cfg = {
-            defAnimation: "fadeInUp",    // default css animation
-            scrollDuration: 800,           // smoothscroll duration
-            statsDuration: 4000,          // stats animation duration
+            defAnimation: "fadeInUp", // default css animation
+            scrollDuration: 800, // smoothscroll duration
+            statsDuration: 4000, // stats animation duration
             mailChimpURL: 'http://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e65110b38d'
         },
 
@@ -19,11 +19,11 @@
 
     /* Preloader
      * -------------------------------------------------- */
-    var ssPreloader = function () {
-        $WIN.on('load', function () {
+    var ssPreloader = function() {
+        $WIN.on('load', function() {
 
             // will first fade out the loading animation
-            $("#loader").fadeOut("slow", function () {
+            $("#loader").fadeOut("slow", function() {
 
                 // will fade out the whole DIV that covers the website.
                 $("#preloader").delay(300).fadeOut("slow");
@@ -35,7 +35,7 @@
 
     /* audio controls
      * -------------------------------------------------- */
-    var ssMediaElementPlayer = function () {
+    var ssMediaElementPlayer = function() {
         $("audio").mediaelementplayer({
             features: ['playpause', 'progress', 'tracks', 'volume']
         });
@@ -44,16 +44,16 @@
 
     /* FitVids
     ------------------------------------------------------ */
-    var ssFitVids = function () {
+    var ssFitVids = function() {
         $(".fluid-video-wrapper").fitVids();
     };
 
 
     /* pretty print
      * -------------------------------------------------- */
-    var ssPrettyPrint = function () {
+    var ssPrettyPrint = function() {
         $('pre').addClass('prettyprint');
-        $(document).ready(function () {
+        $(document).ready(function() {
             prettyPrint();
         });
     };
@@ -61,9 +61,9 @@
 
     /* Alert Boxes
       ------------------------------------------------------- */
-    var ssAlertBoxes = function () {
+    var ssAlertBoxes = function() {
 
-        $('.alert-box').on('click', '.close', function () {
+        $('.alert-box').on('click', '.close', function() {
             $(this).parent().fadeOut(500);
         });
 
@@ -72,11 +72,15 @@
 
     /* superfish
      * -------------------------------------------------- */
-    var ssSuperFish = function () {
+    var ssSuperFish = function() {
         $('ul.sf-menu').superfish({
 
-            animation: {height: 'show'}, // slide-down effect without fade-in
-            animationOut: {height: 'hide'}, // slide-up effect without fade-in
+            animation: {
+                height: 'show'
+            }, // slide-down effect without fade-in
+            animationOut: {
+                height: 'hide'
+            }, // slide-up effect without fade-in
             cssArrows: false, // disable css arrows
             delay: 600 // .6 second delay on mouseout
 
@@ -86,12 +90,12 @@
 
     /* Mobile Menu
  ------------------------------------------------------ */
-    var ssMobileNav = function () {
+    var ssMobileNav = function() {
 
         var toggleButton = $('.menu-toggle'),
             nav = $('.main-navigation');
 
-        toggleButton.on('click', function (event) {
+        toggleButton.on('click', function(event) {
             event.preventDefault();
 
             toggleButton.toggleClass('is-clicked');
@@ -100,12 +104,12 @@
 
         if (toggleButton.is(':visible')) nav.addClass('mobile');
 
-        $WIN.resize(function () {
+        $WIN.resize(function() {
             if (toggleButton.is(':visible')) nav.addClass('mobile');
             else nav.removeClass('mobile');
         });
 
-        $('#main-nav-wrap li a').on("click", function () {
+        $('#main-nav-wrap li a').on("click", function() {
             if (nav.hasClass('mobile')) {
                 toggleButton.toggleClass('is-clicked');
                 nav.fadeOut();
@@ -117,7 +121,7 @@
 
     /* search
      ------------------------------------------------------ */
-    var ssSearch = function () {
+    var ssSearch = function() {
 
         var searchWrap = $('.search-wrap');
         var searchField = searchWrap.find('.search-field');
@@ -125,65 +129,68 @@
         var searchTrigger = $('.search-trigger');
         var body = $('body');
 
-        searchTrigger.on('click', function (e) {
+        searchTrigger.on('click', function(e) {
 
             e.preventDefault();
             e.stopPropagation();
             var $this = $(this);
 
             body.addClass('search-visible');
-            setTimeout(function () {
+            setTimeout(function() {
                 $('.search-wrap').find('.search-field').focus();
             }, 100);
 
         });
 
 
-        closeSearch.on('click', function () {
+        closeSearch.on('click', function() {
             var $this = $(this);
 
             if (body.hasClass('search-visible')) {
                 body.removeClass('search-visible');
-                setTimeout(function () {
+                setTimeout(function() {
                     $('.search-wrap').find('.search-field').blur();
                 }, 100);
             }
         });
 
-        searchWrap.on('click', function (e) {
+        searchWrap.on('click', function(e) {
             if (!$(e.target).is('.search-field')) {
                 closeSearch.trigger('click');
             }
         });
 
-        searchField.on('click', function (e) {
+        searchField.on('click', function(e) {
             e.stopPropagation();
         });
 
-        searchField.attr({placeholder: 'Type Your Keywords', autocomplete: 'off'});
+        searchField.attr({
+            placeholder: 'Type Your Keywords',
+            autocomplete: 'off'
+        });
 
     };
 
 
     /*	Masonry
     ------------------------------------------------------ */
-    var ssMasonryFolio = function () {
+    var ssMasonryFolio = function() {
 
     };
 
 
     /* animate bricks
-      * ------------------------------------------------------ */
-    var ssBricksAnimate = function () {
+     * ------------------------------------------------------ */
+    var ssBricksAnimate = function() {
 
         var animateEl = $('.animate-this');
 
-        $WIN.on('load', function () {
-            setTimeout(function () {
-                animateEl.each(function (ctr) {
+        $WIN.on('load', function() {
+            setTimeout(function() {
+                animateEl.each(function(ctr) {
                     var el = $(this);
 
-                    setTimeout(function () {
+                    setTimeout(function() {
                         el.addClass('animated fadeInUp');
                     }, ctr * 200);
 
@@ -191,7 +198,7 @@
             }, 200);
         });
 
-        $WIN.on('resize', function () {
+        $WIN.on('resize', function() {
             // remove animation classes
             animateEl.removeClass('animate-this animated fadeInUp');
         });
@@ -200,10 +207,10 @@
 
 
     /* Flex Slider
-      * ------------------------------------------------------ */
-    var ssFlexSlider = function () {
+     * ------------------------------------------------------ */
+    var ssFlexSlider = function() {
 
-        $WIN.on('load', function () {
+        $WIN.on('load', function() {
 
             $('#featured-post-slider').flexslider({
                 namespace: "flex-",
@@ -229,9 +236,9 @@
                 animationSpeed: 600,
                 randomize: false,
                 touch: true,
-                start: function (slider) {
+                start: function(slider) {
                     if (typeof slider.container === 'object') {
-                        slider.container.on("click", function (e) {
+                        slider.container.on("click", function(e) {
                             if (!slider.animating) {
                                 slider.flexAnimate(slider.getTarget('next'));
                             }
@@ -247,10 +254,10 @@
 
 
     /* Smooth Scrolling
-      * ------------------------------------------------------ */
-    var ssSmoothScroll = function () {
+     * ------------------------------------------------------ */
+    var ssSmoothScroll = function() {
 
-        $('.smoothscroll').on('click', function (e) {
+        $('.smoothscroll').on('click', function(e) {
             var target = this.hash,
                 $target = $(target);
 
@@ -259,7 +266,7 @@
 
             $('html, body').stop().animate({
                 'scrollTop': $target.offset().top
-            }, cfg.scrollDuration, 'swing').promise().done(function () {
+            }, cfg.scrollDuration, 'swing').promise().done(function() {
 
                 // check if menu is open
                 if ($('body').hasClass('menu-is-open')) {
@@ -274,15 +281,15 @@
 
 
     /* Placeholder Plugin Settings
-      * ------------------------------------------------------ */
-    var ssPlaceholder = function () {
+     * ------------------------------------------------------ */
+    var ssPlaceholder = function() {
         $('input, textarea, select').placeholder();
     };
 
 
     /* AjaxChimp
-      * ------------------------------------------------------ */
-    var ssAjaxChimp = function () {
+     * ------------------------------------------------------ */
+    var ssAjaxChimp = function() {
 
         $('#mc-form').ajaxChimp({
             language: 'es',
@@ -314,17 +321,17 @@
 
 
     /* Back to Top
-      * ------------------------------------------------------ */
-    var ssBackToTop = function () {
+     * ------------------------------------------------------ */
+    var ssBackToTop = function() {
 
-        var pxShow = 500,         // height on which the button will show
-            fadeInTime = 400,         // how slow/fast you want the button to show
-            fadeOutTime = 400,         // how slow/fast you want the button to hide
-            scrollSpeed = 300,         // how slow/fast you want the button to scroll to top. can be a value, 'slow', 'normal' or 'fast'
+        var pxShow = 500, // height on which the button will show
+            fadeInTime = 400, // how slow/fast you want the button to show
+            fadeOutTime = 400, // how slow/fast you want the button to hide
+            scrollSpeed = 300, // how slow/fast you want the button to scroll to top. can be a value, 'slow', 'normal' or 'fast'
             goTopButton = $("#go-top")
 
         // Show or hide the sticky footer button
-        $(window).on('scroll', function () {
+        $(window).on('scroll', function() {
             if ($(window).scrollTop() >= pxShow) {
                 goTopButton.fadeIn(fadeInTime);
             } else {
@@ -335,8 +342,8 @@
 
 
     /* Map
-      * ------------------------------------------------------ */
-    var ssGoogleMap = function () {
+     * ------------------------------------------------------ */
+    var ssGoogleMap = function() {
 
         if (typeof google === 'object' && typeof google.maps === 'object') {
 
@@ -360,172 +367,255 @@
             }
 
             // map style
-            var style = [
-                {
+            var style = [{
                     // set saturation for the labels on the map
                     elementType: "labels",
-                    stylers: [
-                        {saturation: saturation_value}
-                    ]
+                    stylers: [{
+                        saturation: saturation_value
+                    }]
                 },
-                {	// poi stands for point of interest - don't show these lables on the map
+                { // poi stands for point of interest - don't show these lables on the map
                     featureType: "poi",
                     elementType: "labels",
-                    stylers: [
-                        {visibility: "off"}
-                    ]
+                    stylers: [{
+                        visibility: "off"
+                    }]
                 },
                 {
                     // don't show highways lables on the map
                     featureType: 'road.highway',
                     elementType: 'labels',
-                    stylers: [
-                        {visibility: "off"}
-                    ]
+                    stylers: [{
+                        visibility: "off"
+                    }]
                 },
                 {
                     // don't show local road lables on the map
                     featureType: "road.local",
                     elementType: "labels.icon",
-                    stylers: [
-                        {visibility: "off"}
-                    ]
+                    stylers: [{
+                        visibility: "off"
+                    }]
                 },
                 {
                     // don't show arterial road lables on the map
                     featureType: "road.arterial",
                     elementType: "labels.icon",
-                    stylers: [
-                        {visibility: "off"}
-                    ]
+                    stylers: [{
+                        visibility: "off"
+                    }]
                 },
                 {
                     // don't show road lables on the map
                     featureType: "road",
                     elementType: "geometry.stroke",
-                    stylers: [
-                        {visibility: "off"}
-                    ]
+                    stylers: [{
+                        visibility: "off"
+                    }]
                 },
                 // style different elements on the map
                 {
                     featureType: "transit",
                     elementType: "geometry.fill",
-                    stylers: [
-                        {hue: main_color},
-                        {visibility: "on"},
-                        {lightness: brightness_value},
-                        {saturation: saturation_value}
+                    stylers: [{
+                            hue: main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: brightness_value
+                        },
+                        {
+                            saturation: saturation_value
+                        }
                     ]
                 },
                 {
                     featureType: "poi",
                     elementType: "geometry.fill",
-                    stylers: [
-                        {hue: main_color},
-                        {visibility: "on"},
-                        {lightness: brightness_value},
-                        {saturation: saturation_value}
+                    stylers: [{
+                            hue: main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: brightness_value
+                        },
+                        {
+                            saturation: saturation_value
+                        }
                     ]
                 },
                 {
                     featureType: "poi.government",
                     elementType: "geometry.fill",
-                    stylers: [
-                        {hue: main_color},
-                        {visibility: "on"},
-                        {lightness: brightness_value},
-                        {saturation: saturation_value}
+                    stylers: [{
+                            hue: main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: brightness_value
+                        },
+                        {
+                            saturation: saturation_value
+                        }
                     ]
                 },
                 {
                     featureType: "poi.sport_complex",
                     elementType: "geometry.fill",
-                    stylers: [
-                        {hue: main_color},
-                        {visibility: "on"},
-                        {lightness: brightness_value},
-                        {saturation: saturation_value}
+                    stylers: [{
+                            hue: main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: brightness_value
+                        },
+                        {
+                            saturation: saturation_value
+                        }
                     ]
                 },
                 {
                     featureType: "poi.attraction",
                     elementType: "geometry.fill",
-                    stylers: [
-                        {hue: main_color},
-                        {visibility: "on"},
-                        {lightness: brightness_value},
-                        {saturation: saturation_value}
+                    stylers: [{
+                            hue: main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: brightness_value
+                        },
+                        {
+                            saturation: saturation_value
+                        }
                     ]
                 },
                 {
                     featureType: "poi.business",
                     elementType: "geometry.fill",
-                    stylers: [
-                        {hue: main_color},
-                        {visibility: "on"},
-                        {lightness: brightness_value},
-                        {saturation: saturation_value}
+                    stylers: [{
+                            hue: main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: brightness_value
+                        },
+                        {
+                            saturation: saturation_value
+                        }
                     ]
                 },
                 {
                     featureType: "transit",
                     elementType: "geometry.fill",
-                    stylers: [
-                        {hue: main_color},
-                        {visibility: "on"},
-                        {lightness: brightness_value},
-                        {saturation: saturation_value}
+                    stylers: [{
+                            hue: main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: brightness_value
+                        },
+                        {
+                            saturation: saturation_value
+                        }
                     ]
                 },
                 {
                     featureType: "transit.station",
                     elementType: "geometry.fill",
-                    stylers: [
-                        {hue: main_color},
-                        {visibility: "on"},
-                        {lightness: brightness_value},
-                        {saturation: saturation_value}
+                    stylers: [{
+                            hue: main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: brightness_value
+                        },
+                        {
+                            saturation: saturation_value
+                        }
                     ]
                 },
                 {
                     featureType: "landscape",
-                    stylers: [
-                        {hue: main_color},
-                        {visibility: "on"},
-                        {lightness: brightness_value},
-                        {saturation: saturation_value}
+                    stylers: [{
+                            hue: main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: brightness_value
+                        },
+                        {
+                            saturation: saturation_value
+                        }
                     ]
 
                 },
                 {
                     featureType: "road",
                     elementType: "geometry.fill",
-                    stylers: [
-                        {hue: main_color},
-                        {visibility: "on"},
-                        {lightness: brightness_value},
-                        {saturation: saturation_value}
+                    stylers: [{
+                            hue: main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: brightness_value
+                        },
+                        {
+                            saturation: saturation_value
+                        }
                     ]
                 },
                 {
                     featureType: "road.highway",
                     elementType: "geometry.fill",
-                    stylers: [
-                        {hue: main_color},
-                        {visibility: "on"},
-                        {lightness: brightness_value},
-                        {saturation: saturation_value}
+                    stylers: [{
+                            hue: main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: brightness_value
+                        },
+                        {
+                            saturation: saturation_value
+                        }
                     ]
                 },
                 {
                     featureType: "water",
                     elementType: "geometry",
-                    stylers: [
-                        {hue: main_color},
-                        {visibility: "on"},
-                        {lightness: brightness_value},
-                        {saturation: saturation_value}
+                    stylers: [{
+                            hue: main_color
+                        },
+                        {
+                            visibility: "on"
+                        },
+                        {
+                            lightness: brightness_value
+                        },
+                        {
+                            saturation: saturation_value
+                        }
                     ]
                 }
             ];
@@ -569,10 +659,10 @@
                 controlDiv.appendChild(controlUIzoomOut);
 
                 // Setup the click event listeners and zoom-in or out according to the clicked element
-                google.maps.event.addDomListener(controlUIzoomIn, 'click', function () {
+                google.maps.event.addDomListener(controlUIzoomIn, 'click', function() {
                     map.setZoom(map.getZoom() + 1)
                 });
-                google.maps.event.addDomListener(controlUIzoomOut, 'click', function () {
+                google.maps.event.addDomListener(controlUIzoomOut, 'click', function() {
                     map.setZoom(map.getZoom() - 1)
                 });
 
@@ -589,9 +679,9 @@
     };
 
     /* Social Media Filter
-      * ------------------------------------------------------ */
-    var ssSocialMediaFilter = function () {
-        $('.social-media-filter .fab').click(function () {
+     * ------------------------------------------------------ */
+    var ssSocialMediaFilter = function() {
+        $('.social-media-filter .fab').click(function() {
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
             } else {
@@ -604,7 +694,7 @@
 
     function refreshLayout() {
         var actived = [];
-        $('.social-media-filter .fab.active').each(function () {
+        $('.social-media-filter .fab.active').each(function() {
             if ($(this).hasClass("fa-facebook-square")) {
                 actived.push('facebook');
             } else if ($(this).hasClass("fa-flickr")) {
@@ -613,9 +703,11 @@
                 actived.push('tumblr');
             } else if ($(this).hasClass("fa-youtube-square")) {
                 actived.push('youtube');
+            } else if ($(this).hasClass("fa-reddit-square")) {
+                actived.push('reddit');
             }
         });
-        $('article').each(function () {
+        $('article').each(function() {
             var isFound = false
             for (var i = 0; i < actived.length; i++) {
                 if ($(this).hasClass(actived[i])) {
@@ -624,7 +716,7 @@
                     break;
                 }
             }
-            if(!isFound){
+            if (!isFound) {
                 $(this).css('display', 'none');
             }
         });
@@ -632,7 +724,7 @@
     }
 
     /* Initialize
-      * ------------------------------------------------------ */
+     * ------------------------------------------------------ */
     (function ssInit() {
 
         ssPreloader();
