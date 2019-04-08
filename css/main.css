@@ -3363,6 +3363,10 @@ footer ul li {
     background: #35465c;
 }
 
+.entry-info.reddit {
+    background: #ff4500;
+}
+
 .article-icon {
     height: 30px;
     vertical-align: middle;
@@ -3400,6 +3404,10 @@ footer ul li {
 
 .social-media-filter .fa-youtube-square.active {
     color: #ff0000;
+}
+
+.social-media-filter .fa-reddit-square.active {
+    color: #ff4500;
 }
 
 .tmblr-full {

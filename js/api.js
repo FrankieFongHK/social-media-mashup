@@ -25,11 +25,11 @@ function loadScript(url, callback) {
 
 include('js/timeago.min.js');
 
-var flickrResponse = function () {
-    getRecentPosts().then(function (flickrArticles) {
+var flickrResponse = function() {
+    getRecentPosts().then(function(flickrArticles) {
         console.log('flickrResponse: %o', flickrArticles);
         var item_width = $('.bricks-wrapper').width() * 0.23;
-        flickrArticles.map(function (article) {
+        flickrArticles.map(function(article) {
             var title = article["title"];
             var url = article["url"];
             var thumbnail = article["thumbnail"];
@@ -70,17 +70,82 @@ var flickrResponse = function () {
             $('.bricks-wrapper').append(content).masonry('layout');
             $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
 
-            SocialShareKit.init({reinitialize: true});
+            SocialShareKit.init({
+                reinitialize: true
+            });
         });
-        $('.bricks-wrapper').imagesLoaded().progress(function () {
+        $('.bricks-wrapper').imagesLoaded().progress(function() {
             $('.bricks-wrapper').masonry('layout');
         });
     });
 };
 
-var facebookRes = function (articles) {
+var redditResponse = function() {
+    getRedditPost().then(function(redditArticles) {
+        console.log('redditResponse: %o', redditArticles);
+        redditArticles.map(function(article) {
+            var title = article["title"];
+            var url = article["url"];
+            var thumbnail = article["thumbnail"];
+            var description = article["description"];
+            var post_date = article["post_date"] * 1000;
+
+            var content = '';
+
+            if (article['videoUrl']) {
+                content += '<article class="grid-item entry format-video youtube">' +
+                    '<div class="entry-thumb video-image">' +
+                    '<a href="' + article['videoUrl'] + '" data-lity>' +
+                    '<img src="' + thumbnail + '" style="alt="' + title + '">' +
+                    '</a>';
+            } else {
+                content += '<article class="grid-item entry format-standard reddit">' +
+                    '<div class="entry-thumb">';
+                if (thumbnail) {
+                    content += '<a href="' + url + '" class="thumb-link" target="_blank">' +
+                        '<img src="' + thumbnail + '" style="width: 100%;" alt="' + title + '">' +
+                        '</a>';
+                }
+            }
+
+            content += '<div class="ssk-group" data-url="' + url + '">' +
+                '<a href="" class="ssk ssk-facebook"></a>' +
+                '<a href="" class="ssk ssk-twitter"></a>' +
+                '<a href="" class="ssk ssk-google-plus"></a>' +
+                '<a href="" class="ssk ssk-pinterest"></a>' +
+                '<a href="" class="ssk ssk-tumblr"></a>' +
+                '<a href="" class="ssk ssk-email"></a>' +
+                '</div>' +
+                '</div>' +
+                '<div class="entry-text">' +
+                '<div class="entry-header">' +
+                '<h1 class="entry-title"><a href="' + url + '" target="_blank">' + title + '</a></h1>' +
+                '</div>' +
+                '<div class="entry-excerpt">' +
+                description +
+                '</div>' +
+                '</div>' +
+                '<a href="' + url + '" target="_blank"><div class="entry-info reddit">' +
+                '<img class="article-icon" src="images/ic-reddit.png" /> <span style="text-decoration:underline;">Posted</span> <b>' + timeago.format(post_date) + '</b>' +
+                '</div></a>' +
+                '</article>';
+
+            $('.bricks-wrapper').append(content).masonry('layout');
+            $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
+
+            SocialShareKit.init({
+                reinitialize: true
+            });
+        });
+        $('.bricks-wrapper').imagesLoaded().progress(function() {
+            $('.bricks-wrapper').masonry('layout');
+        });
+    });
+};
+
+var facebookRes = function(articles) {
     console.log(articles);
-    articles.map(function (post) {
+    articles.map(function(post) {
         var content = '<article class="grid-item entry format-standard facebook">' +
             '<div id="fb-embed-' + post.id + '" class="entry-thumb facebook">' +
             '<fb:post id="fb-rendered-' + post.id + '" href="' + post['url'] + '" data-width="100%" ></fb:post>' +
@@ -92,24 +157,24 @@ var facebookRes = function (articles) {
         $('.bricks-wrapper').append(content).masonry('layout');
 
         //$('#fb-rendered-' + post.id).attr("data-width", $('#fb-embed-' + post.id).width());
-        FB.XFBML.parse(document.getElementById('fb-embed-' + post.id), function () {
+        FB.XFBML.parse(document.getElementById('fb-embed-' + post.id), function() {
             $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
         });
     });
-    $('.bricks-wrapper').imagesLoaded().progress(function () {
+    $('.bricks-wrapper').imagesLoaded().progress(function() {
         $('.bricks-wrapper').masonry('layout');
     });
 };
 
-var facebookResponse = function () {
+var facebookResponse = function() {
     getFacebookPosts(facebookRes);
 };
 
 function youtubeResponse() {
-    searchYoutubePost().then(function (articles) {
+    searchYoutubePost().then(function(articles) {
         console.log('youtubeResponse: %o', articles);
         var item_width = $('.bricks-wrapper').width() * 0.23;
-        articles.map(function (article) {
+        articles.map(function(article) {
             console.log(article);
             var title = article["title"];
             var description = article["description"];
@@ -150,19 +215,21 @@ function youtubeResponse() {
             $('.bricks-wrapper').append(content).masonry('layout');
             $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
 
-            SocialShareKit.init({reinitialize: true});
+            SocialShareKit.init({
+                reinitialize: true
+            });
         })
 
     });
-    $('.bricks-wrapper').imagesLoaded().progress(function () {
+    $('.bricks-wrapper').imagesLoaded().progress(function() {
         $('.bricks-wrapper').masonry('layout');
     });
 }
 
 function tumblrResponse() {
     var item_width = $('.bricks-wrapper').width() * 0.23;
-    getThumblrPost().then(function (articles) {
-        articles.map(function (article) {
+    getThumblrPost().then(function(articles) {
+        articles.map(function(article) {
             var url = article["url"];
             var thumbnail = article["thumbnail"];
             var description = article["description"];
@@ -202,18 +269,20 @@ function tumblrResponse() {
                     '</div></div>';
             }
             content += '<a href="' + url + '" target="_blank"><div class="entry-info tumblr">' +
-            '<img class="article-icon" src="images/ic-tumblr.png" /> <span style="text-decoration:underline;">Posted</span> <b>' + timeago.format(post_date) + '</b>' +
-            '</div></a>' +
-            '</article>';
+                '<img class="article-icon" src="images/ic-tumblr.png" /> <span style="text-decoration:underline;">Posted</span> <b>' + timeago.format(post_date) + '</b>' +
+                '</div></a>' +
+                '</article>';
 
 
             $('.bricks-wrapper').append(content).masonry('layout');
             $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
 
-            SocialShareKit.init({reinitialize: true});
+            SocialShareKit.init({
+                reinitialize: true
+            });
         });
     });
-    $('.bricks-wrapper').imagesLoaded().progress(function () {
+    $('.bricks-wrapper').imagesLoaded().progress(function() {
         $('.bricks-wrapper').masonry('layout');
     });
 
@@ -223,10 +292,8 @@ function apiGetAll() {
     var keyword = "food";
     var url = new URL(location.href);
     var s = url.searchParams.get("s");
-    if (!s) {
-        loadScript('js/facebook-api.js', facebookResponse);
-    }
-    loadScript('js/flickr-api.js', flickrResponse);
     loadScript('js/youtube-api.js', youtubeResponse);
+    loadScript('js/flickr-api.js', flickrResponse);
+    loadScript('js/reddit-api.js', redditResponse);
     loadScript('js/tumblr-api.js', tumblrResponse);
 }
