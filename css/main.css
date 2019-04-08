@@ -26,7 +26,6 @@
  *  01. webfonts and iconfonts - (_document-setup.scss)
  *
  * ------------------------------------------------------------------- */
-@import url("font-awesome/css/font-awesome.min.css");
 @import url("micons/micons.css");
 @import url("fonts.css");
 
@@ -2379,7 +2378,7 @@ header .logo h1 {
  *
  * ------------------------------------------------------------------- */
 #bricks {
-    padding-top: 4.2rem;
+    padding-top: 2.2rem;
 }
 
 #bricks .masonry {
@@ -3385,4 +3384,37 @@ footer ul li {
     height: 30px;
     vertical-align: middle;
     margin-top: -4px;
+}
+
+.social-media-filter {
+    padding-top: 2.2rem;
+    text-align: center;
+}
+
+.social-media-filter span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -26px;
+}
+
+.social-media-filter .fab {
+    cursor: pointer;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.social-media-filter .fa-facebook-square.active {
+    color: #3b5998;
+}
+
+.social-media-filter .fa-flickr.active {
+    color: #ff0084;
+}
+
+.social-media-filter .fa-tumblr-square.active {
+    color: #35465c;
+}
+
+.social-media-filter .fa-youtube-square.active {
+    color: #ff0000;
 }
