@@ -30,6 +30,10 @@ function getThumblrPost() {
                 result['description'] = article['body'];
             }
 
+            if(article['type'] == 'link') {
+                result['thumbnail'] = article['link_image'];
+            }
+
             return result;
         });
 

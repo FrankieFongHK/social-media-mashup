@@ -364,23 +364,6 @@ fieldset {
     margin-bottom: 1.5rem;
 }
 
-input,
-textarea,
-select,
-pre,
-blockquote,
-figure,
-table,
-p,
-ul,
-ol,
-dl,
-form,
-.fluid-video-wrapper,
-.ss-custom-select {
-    margin-bottom: 3rem;
-}
-
 /* -------------------------------------------------------------------
  * floated image - (_document-setup)
  * ------------------------------------------------------------------- */
@@ -3417,4 +3400,8 @@ footer ul li {
 
 .social-media-filter .fa-youtube-square.active {
     color: #ff0000;
+}
+
+.tmblr-full {
+    margin: 0 !important;
 }

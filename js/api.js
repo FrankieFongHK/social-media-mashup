@@ -26,10 +26,10 @@ function loadScript(url, callback) {
 include('js/timeago.min.js');
 
 var flickrResponse = function () {
-    getRecentPosts().then(function(flickrArticles) {
+    getRecentPosts().then(function (flickrArticles) {
         console.log('flickrResponse: %o', flickrArticles);
         var item_width = $('.bricks-wrapper').width() * 0.23;
-        flickrArticles.map(function(article) {
+        flickrArticles.map(function (article) {
             var title = article["title"];
             var url = article["url"];
             var thumbnail = article["thumbnail"];
@@ -45,13 +45,13 @@ var flickrResponse = function () {
                 '<a href="' + url + '" class="thumb-link" target="_blank">' +
                 '<img src="' + thumbnail + '" style="width: 100%;" alt="' + title + '">' +
                 '</a>' +
-                '<div class="ssk-group" data-url="' + url + '">'+
-                    '<a href="" class="ssk ssk-facebook"></a>' +
-                    '<a href="" class="ssk ssk-twitter"></a>' +
-                    '<a href="" class="ssk ssk-google-plus"></a>' +
-                    '<a href="" class="ssk ssk-pinterest"></a>' +
-                    '<a href="" class="ssk ssk-tumblr"></a>' +
-                    '<a href="" class="ssk ssk-email"></a>' +
+                '<div class="ssk-group" data-url="' + url + '">' +
+                '<a href="" class="ssk ssk-facebook"></a>' +
+                '<a href="" class="ssk ssk-twitter"></a>' +
+                '<a href="" class="ssk ssk-google-plus"></a>' +
+                '<a href="" class="ssk ssk-pinterest"></a>' +
+                '<a href="" class="ssk ssk-tumblr"></a>' +
+                '<a href="" class="ssk ssk-email"></a>' +
                 '</div>' +
                 '</div>' +
                 '<div class="entry-text">' +
@@ -62,15 +62,15 @@ var flickrResponse = function () {
                 description +
                 '</div>' +
                 '</div>' +
-                '<div class="entry-info flickr">' +
+                '<a href="' + url + '" target="_blank"><div class="entry-info flickr">' +
                 '<img class="article-icon" src="images/ic-flickr.png" /> <span style="text-decoration:underline;">Posted</span> <b>' + timeago.format(post_date) + '</b>' +
-                '</div>' +
+                '</div></a>' +
                 '</article>';
 
             $('.bricks-wrapper').append(content).masonry('layout');
             $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
 
-            SocialShareKit.init({ reinitialize: true });
+            SocialShareKit.init({reinitialize: true});
         });
         $('.bricks-wrapper').imagesLoaded().progress(function () {
             $('.bricks-wrapper').masonry('layout');
@@ -80,25 +80,23 @@ var flickrResponse = function () {
 
 var facebookRes = function (articles) {
     console.log(articles);
-    articles.map(function(post) {
+    articles.map(function (post) {
         var content = '<article class="grid-item entry format-standard facebook">' +
             '<div id="fb-embed-' + post.id + '" class="entry-thumb facebook">' +
             '<fb:post id="fb-rendered-' + post.id + '" href="' + post['url'] + '" data-width="100%" ></fb:post>' +
             '</div>' +
-            '<div class="entry-info facebook">' +
+            '<a href="' + post.url + '" target="_blank"><div class="entry-info facebook">' +
             '<img class="article-icon" src="images/ic-facebook.png" /> <span style="text-decoration:underline;">Posted</span> <b>' + timeago.format(post['post_date']) + '</b>' +
-            '</div>'
+            '</div></a>'
         '</article>';
         $('.bricks-wrapper').append(content).masonry('layout');
 
-        console.log('width: ' + $('#fb-embed-' + post.id).width());
         //$('#fb-rendered-' + post.id).attr("data-width", $('#fb-embed-' + post.id).width());
-        FB.XFBML.parse(document.getElementById('fb-embed-' + post.id), function(){
+        FB.XFBML.parse(document.getElementById('fb-embed-' + post.id), function () {
             $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
         });
     });
     $('.bricks-wrapper').imagesLoaded().progress(function () {
-        console.log("imagesLoaded @@@@@");
         $('.bricks-wrapper').masonry('layout');
     });
 };
@@ -108,10 +106,10 @@ var facebookResponse = function () {
 };
 
 function youtubeResponse() {
-    searchYoutubePost().then(function(articles) {
+    searchYoutubePost().then(function (articles) {
         console.log('youtubeResponse: %o', articles);
         var item_width = $('.bricks-wrapper').width() * 0.23;
-        articles.map(function(article) {
+        articles.map(function (article) {
             console.log(article);
             var title = article["title"];
             var description = article["description"];
@@ -127,13 +125,13 @@ function youtubeResponse() {
                 '<a href="' + url + '" data-lity>' +
                 '<img src="' + thumbnail + '" style="alt="' + title + '">' +
                 '</a>' +
-                '<div class="ssk-group" data-url="' + url + '">'+
-                    '<a href="" class="ssk ssk-facebook"></a>' +
-                    '<a href="" class="ssk ssk-twitter"></a>' +
-                    '<a href="" class="ssk ssk-google-plus"></a>' +
-                    '<a href="" class="ssk ssk-pinterest"></a>' +
-                    '<a href="" class="ssk ssk-tumblr"></a>' +
-                    '<a href="" class="ssk ssk-email"></a>' +
+                '<div class="ssk-group" data-url="' + url + '">' +
+                '<a href="" class="ssk ssk-facebook"></a>' +
+                '<a href="" class="ssk ssk-twitter"></a>' +
+                '<a href="" class="ssk ssk-google-plus"></a>' +
+                '<a href="" class="ssk ssk-pinterest"></a>' +
+                '<a href="" class="ssk ssk-tumblr"></a>' +
+                '<a href="" class="ssk ssk-email"></a>' +
                 '</div>' +
                 '</div>' +
                 '<div class="entry-text">' +
@@ -144,15 +142,15 @@ function youtubeResponse() {
                 description +
                 '</div>' +
                 '</div>' +
-                '<div class="entry-info youtube">' +
+                '<a href="' + url + '" target="_blank"><div class="entry-info youtube">' +
                 '<img class="article-icon" src="images/ic-youtube.png" /> <span style="text-decoration:underline;">Posted</span> <b>' + timeago.format(post_date) + '</b>' +
-                '</div>' +
+                '</div></a>' +
                 '</article>';
 
             $('.bricks-wrapper').append(content).masonry('layout');
             $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
 
-            SocialShareKit.init({ reinitialize: true });
+            SocialShareKit.init({reinitialize: true});
         })
 
     });
@@ -163,8 +161,8 @@ function youtubeResponse() {
 
 function tumblrResponse() {
     var item_width = $('.bricks-wrapper').width() * 0.23;
-    getThumblrPost().then(function(articles) {
-        articles.map(function(article) {
+    getThumblrPost().then(function (articles) {
+        articles.map(function (article) {
             var url = article["url"];
             var thumbnail = article["thumbnail"];
             var description = article["description"];
@@ -176,37 +174,43 @@ function tumblrResponse() {
 
             var content = '<article class="grid-item entry format-standard tumblr">' +
                 '<div class="entry-thumb">';
-                if(thumbnail) {
-                    content += '<a href="' + url + '" class="thumb-link" target="_blank">' +
+            if (thumbnail) {
+                content += '<a href="' + url + '" class="thumb-link" target="_blank">' +
                     '<img src="' + thumbnail + '" alt="' + description + '">' +
                     '</a>';
-                }
-                content += '<div class="ssk-group" data-url="' + url + '">'+
-                                '<a href="" class="ssk ssk-facebook"></a>' +
-                                '<a href="" class="ssk ssk-twitter"></a>' +
-                                '<a href="" class="ssk ssk-google-plus"></a>' +
-                                '<a href="" class="ssk ssk-pinterest"></a>' +
-                                '<a href="" class="ssk ssk-tumblr"></a>' +
-                                '<a href="" class="ssk ssk-email"></a>' +
-                            '</div>' +
+            } else if (type == 'text') {
+                content += '<a href="' + url + '" class="thumb-link" target="_blank">' +
+                    description +
+                    '</a>';
+            }
+            content += '<div class="ssk-group" data-url="' + url + '">' +
+                '<a href="" class="ssk ssk-facebook"></a>' +
+                '<a href="" class="ssk ssk-twitter"></a>' +
+                '<a href="" class="ssk ssk-google-plus"></a>' +
+                '<a href="" class="ssk ssk-pinterest"></a>' +
+                '<a href="" class="ssk ssk-tumblr"></a>' +
+                '<a href="" class="ssk ssk-email"></a>' +
                 '</div>' +
-                '<div class="entry-text">' +
-                '<div class="entry-header">' +
-                //'<h1 class="entry-title"><a href="' + url + '" target="_blank">' + title + '</a></h1>' +
-                '</div>' +
-                '<div class="entry-excerpt">' +
-                description +
-                '</div>' +
-                '</div>' +
-                '<div class="entry-info tumblr">' +
-                '<img class="article-icon" src="images/ic-tumblr.png" /> <span style="text-decoration:underline;">Posted</span> <b>' + timeago.format(post_date) + '</b>' +
-                '</div>' +
-                '</article>';
+                '</div>';
+            if (type != 'text') {
+                content += '<div class="entry-text">' +
+                    '<div class="entry-header">' +
+                    //'<h1 class="entry-title"><a href="' + url + '" target="_blank">' + title + '</a></h1>' +
+                    '</div>';
+                content += '<div class="entry-excerpt">' +
+                    description +
+                    '</div></div>';
+            }
+            content += '<a href="' + url + '" target="_blank"><div class="entry-info tumblr">' +
+            '<img class="article-icon" src="images/ic-tumblr.png" /> <span style="text-decoration:underline;">Posted</span> <b>' + timeago.format(post_date) + '</b>' +
+            '</div></a>' +
+            '</article>';
+
 
             $('.bricks-wrapper').append(content).masonry('layout');
             $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
 
-            SocialShareKit.init({ reinitialize: true });
+            SocialShareKit.init({reinitialize: true});
         });
     });
     $('.bricks-wrapper').imagesLoaded().progress(function () {
@@ -216,13 +220,13 @@ function tumblrResponse() {
 }
 
 function apiGetAll() {
-  var keyword = "food";
-  var url = new URL(location.href);
-  var s = url.searchParams.get("s");
-  if(!s){
-    loadScript('js/facebook-api.js', facebookResponse);
-  }
-  loadScript('js/flickr-api.js', flickrResponse);
-  loadScript('js/youtube-api.js', youtubeResponse);
-  loadScript('js/tumblr-api.js', tumblrResponse);
+    var keyword = "food";
+    var url = new URL(location.href);
+    var s = url.searchParams.get("s");
+    if (!s) {
+        loadScript('js/facebook-api.js', facebookResponse);
+    }
+    loadScript('js/flickr-api.js', flickrResponse);
+    //loadScript('js/youtube-api.js', youtubeResponse);
+    loadScript('js/tumblr-api.js', tumblrResponse);
 }
