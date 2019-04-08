@@ -93,7 +93,7 @@ var redditResponse = function() {
             var content = '';
 
             if (article['videoUrl']) {
-                content += '<article class="grid-item entry format-video youtube">' +
+                content += '<article class="grid-item entry format-video reddit">' +
                     '<div class="entry-thumb video-image">' +
                     '<a href="' + article['videoUrl'] + '" data-lity>' +
                     '<img src="' + thumbnail + '" style="alt="' + title + '">' +
