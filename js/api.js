@@ -40,7 +40,7 @@ var flickrResponse = function() {
             var measure_width = item_width / img_width * img_height;
             console.log('flickr: ' + item_width + '/' + img_width + '*' + img_height);
 
-            var content = '<article class="grid-item entry format-standard flickr">' +
+            var content = '<article class="grid-item entry format-standard flickr"><div class="sort_post_date" style="display: none;">' + post_date + '</div>' +
                 '<div class="entry-thumb">' +
                 '<a href="' + url + '" class="thumb-link" target="_blank">' +
                 '<img src="' + thumbnail + '" style="width: 100%;" alt="' + title + '">' +
@@ -67,15 +67,18 @@ var flickrResponse = function() {
                 '</div></a>' +
                 '</article>';
 
-            $('.bricks-wrapper').append(content).masonry('layout');
-            $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
+            content = $(content);
+
+            $('.bricks-wrapper').append(content).isotope( 'appended', content);
+            $('.bricks-wrapper').isotope('updateSortData').isotope();
 
             SocialShareKit.init({
                 reinitialize: true
             });
         });
         $('.bricks-wrapper').imagesLoaded().progress(function() {
-            $('.bricks-wrapper').masonry('layout');
+            $('.bricks-wrapper').isotope('updateSortData').isotope();
+            $('.bricks-wrapper').isotope('layout');
         });
     });
 };
@@ -93,13 +96,13 @@ var redditResponse = function() {
             var content = '';
 
             if (article['videoUrl']) {
-                content += '<article class="grid-item entry format-video reddit">' +
+                content += '<article class="grid-item entry format-video reddit"><div class="sort_post_date" style="display: none;">' + post_date + '</div>' +
                     '<div class="entry-thumb video-image">' +
                     '<a href="' + article['videoUrl'] + '" data-lity>' +
                     '<img src="' + thumbnail + '" style="alt="' + title + '">' +
                     '</a>';
             } else {
-                content += '<article class="grid-item entry format-standard reddit">' +
+                content += '<article class="grid-item entry format-standard reddit"><input class="sort_post_date" type="hidden" value="' + post_date + '"/>' +
                     '<div class="entry-thumb">';
                 if (thumbnail) {
                     content += '<a href="' + url + '" class="thumb-link" target="_blank">' +
@@ -130,15 +133,18 @@ var redditResponse = function() {
                 '</div></a>' +
                 '</article>';
 
-            $('.bricks-wrapper').append(content).masonry('layout');
-            $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
+            content = $(content);
+
+            $('.bricks-wrapper').append(content).isotope( 'appended', content);
+            $('.bricks-wrapper').isotope('updateSortData').isotope();
 
             SocialShareKit.init({
                 reinitialize: true
             });
         });
         $('.bricks-wrapper').imagesLoaded().progress(function() {
-            $('.bricks-wrapper').masonry('layout');
+            $('.bricks-wrapper').isotope('updateSortData').isotope();
+            $('.bricks-wrapper').isotope('layout');
         });
     });
 };
@@ -185,7 +191,7 @@ function youtubeResponse() {
             var img_width = article["width"];
             var measure_width = item_width / img_width * img_height;
 
-            var content = '<article class="grid-item entry format-video youtube">' +
+            var content = '<article class="grid-item entry format-video youtube"><div class="sort_post_date" style="display: none;">' + post_date + '</div>' +
                 '<div class="entry-thumb video-image">' +
                 '<a href="' + url + '" data-lity>' +
                 '<img src="' + thumbnail + '" style="alt="' + title + '">' +
@@ -212,8 +218,10 @@ function youtubeResponse() {
                 '</div></a>' +
                 '</article>';
 
-            $('.bricks-wrapper').append(content).masonry('layout');
-            $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
+            content = $(content);
+
+            $('.bricks-wrapper').append(content).isotope( 'appended', content);
+            $('.bricks-wrapper').isotope('updateSortData').isotope();
 
             SocialShareKit.init({
                 reinitialize: true
@@ -222,7 +230,8 @@ function youtubeResponse() {
 
     });
     $('.bricks-wrapper').imagesLoaded().progress(function() {
-        $('.bricks-wrapper').masonry('layout');
+        $('.bricks-wrapper').isotope('updateSortData').isotope();
+        $('.bricks-wrapper').isotope('layout');
     });
 }
 
@@ -239,7 +248,7 @@ function tumblrResponse() {
             var img_width = article["img_width"];
             var measure_width = item_width / img_width * img_height;
 
-            var content = '<article class="grid-item entry format-standard tumblr">' +
+            var content = '<article class="grid-item entry format-standard tumblr"><div class="sort_post_date" style="display: none;">' + post_date + '</div>' +
                 '<div class="entry-thumb">';
             if (thumbnail) {
                 content += '<a href="' + url + '" class="thumb-link" target="_blank">' +
@@ -273,9 +282,10 @@ function tumblrResponse() {
                 '</div></a>' +
                 '</article>';
 
+            content = $(content);
 
-            $('.bricks-wrapper').append(content).masonry('layout');
-            $('.bricks-wrapper').masonry("reloadItems").masonry("layout");
+            $('.bricks-wrapper').append(content).isotope( 'appended', content);
+            $('.bricks-wrapper').isotope('updateSortData').isotope();
 
             SocialShareKit.init({
                 reinitialize: true
@@ -283,7 +293,8 @@ function tumblrResponse() {
         });
     });
     $('.bricks-wrapper').imagesLoaded().progress(function() {
-        $('.bricks-wrapper').masonry('layout');
+        $('.bricks-wrapper').isotope('updateSortData').isotope();
+        $('.bricks-wrapper').isotope('layout');
     });
 
 }

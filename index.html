@@ -63,6 +63,7 @@
     <!-- Java Script
     ================================================== -->
     <script>
+    /*
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) {
@@ -88,10 +89,13 @@
                 }, 2000);
             });
         };
+        */
     </script>
 
     <!-- script
     ================================================== -->
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
     <script src="js/modernizr.js"></script>
     <script src="js/pace.min.js"></script>
     <script src="js/api.js"></script>
@@ -230,16 +234,24 @@
     <div id="loader"></div>
 </div>
 
-<script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 
 <script>
-
-    var grid = $('.bricks-wrapper').masonry({
-        columnWidth: '.grid-sizer',
-        itemSelector: '.grid-item'
+    var grid = $('.bricks-wrapper').isotope({
+        itemSelector: '.grid-item',
+        masonry: {
+          columnWidth: '.grid-sizer'
+        },
+        getSortData: {
+          sort_post_date: function(item){
+            return $(item).find('.sort_post_date').val();
+          }
+        },
+        sortAscending: false
     });
+
+    grid.isotope({ sortBy : 'sort_post_date' });
 </script>
 
 <script type="text/javascript">

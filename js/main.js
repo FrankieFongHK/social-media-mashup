@@ -245,7 +245,8 @@
                         });
                     }
 
-                    $('.bricks-wrapper').masonry('layout');
+                    $('.bricks-wrapper').isotope('updateSortData').isotope();
+                    $('.bricks-wrapper').isotope('layout');
                 }
             });
 
@@ -720,7 +721,8 @@
                 $(this).css('display', 'none');
             }
         });
-        $('.bricks-wrapper').masonry('layout');
+        $('.bricks-wrapper').isotope('updateSortData').isotope();
+        $('.bricks-wrapper').isotope('layout');
     }
 
     /* Initialize
