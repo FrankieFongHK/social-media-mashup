@@ -22,7 +22,7 @@ async function searchYoutubePost() {
                     height: thumbnail['height'],
                     width: thumbnail['width'],
                     url: 'https://www.youtube.com/watch?v=' + article['id']['videoId'],
-                    post_date: info['publishedAt']
+                    post_date: Math.round(new Date(info['publishedAt']).getTime())
                 };
             });
         }

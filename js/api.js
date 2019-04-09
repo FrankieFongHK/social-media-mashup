@@ -102,7 +102,7 @@ var redditResponse = function() {
                     '<img src="' + thumbnail + '" style="alt="' + title + '">' +
                     '</a>';
             } else {
-                content += '<article class="grid-item entry format-standard reddit"><input class="sort_post_date" type="hidden" value="' + post_date + '"/>' +
+                content += '<article class="grid-item entry format-standard reddit"><div class="sort_post_date" style="display: none;">' + post_date + '</div>' +
                     '<div class="entry-thumb">';
                 if (thumbnail) {
                     content += '<a href="' + url + '" class="thumb-link" target="_blank">' +
