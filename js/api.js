@@ -300,9 +300,6 @@ function tumblrResponse() {
 }
 
 function apiGetAll() {
-    var keyword = "food";
-    var url = new URL(location.href);
-    var s = url.searchParams.get("s");
     loadScript('js/youtube-api.js', youtubeResponse);
     loadScript('js/flickr-api.js', flickrResponse);
     loadScript('js/reddit-api.js', redditResponse);

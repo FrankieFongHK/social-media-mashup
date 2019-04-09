@@ -1,4 +1,4 @@
-async function getRecentPosts(page){
+async function getRecentPosts(){
 	var keyword = "food";
 	var url = new URL(location.href);
 	var s = url.searchParams.get("s");
@@ -6,7 +6,7 @@ async function getRecentPosts(page){
 		keyword = s;
 	}
 
-	return await fetch("https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=" + keyword + "&accuracy=1&sort=date-posted-desc&safe_search=3&api_key=68a8deb4aba077832d5670bc7f2f361f&per_page=5&format=json&nojsoncallback=1&page=" + page, {
+	return await fetch("https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=" + keyword + "&accuracy=1&sort=date-posted-desc&safe_search=3&api_key=68a8deb4aba077832d5670bc7f2f361f&per_page=5&format=json&nojsoncallback=1", {
 		mode: 'cors'
 	}).then(function(resp){
 		return resp.json();
