@@ -26,7 +26,7 @@ function getRedditPost() {
                 result['thumbnail'] = article['media']['oembed']['thumbnail_url'];
             }
 
-            if(!isset(result['thumbnail'])){
+            if(!result['thumbnail']){
               if (article['thumbnail'] && article['thumbnail'] != 'self') {
                   console.log(article['thumbnail']);
                   if (article['preview']) {
