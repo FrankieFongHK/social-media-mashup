@@ -26,22 +26,23 @@ function getRedditPost() {
                 result['thumbnail'] = article['media']['oembed']['thumbnail_url'];
             }
 
-            if (article['thumbnail'] && article['thumbnail'] != 'self') {
-                console.log(article['thumbnail']);
-                if (article['preview']) {
-                    var resolutions = article['preview']['images'][0]['resolutions'];
-                    if (resolutions.length > 1) {
-                        result['thumbnail'] = resolutions[parseInt(resolutions.length / 2) - 1]['url'];
-                    } else {
-                        result['thumbnail'] = resolutions[0]['url'];
-                    }
-                } else {
-                    if (article['thumbnail'].includes(".jpg") || article['thumbnail'].includes(".jpeg") || article['thumbnail'].includes(".png")) {
-                        result['thumbnail'] = article['thumbnail'];
-                    }
-                }
+            if(!isset(result['thumbnail'])){
+              if (article['thumbnail'] && article['thumbnail'] != 'self') {
+                  console.log(article['thumbnail']);
+                  if (article['preview']) {
+                      var resolutions = article['preview']['images'][0]['resolutions'];
+                      if (resolutions.length > 1) {
+                          result['thumbnail'] = resolutions[parseInt(resolutions.length / 2) - 1]['url'];
+                      } else {
+                          result['thumbnail'] = resolutions[0]['url'];
+                      }
+                  } else {
+                      if (article['thumbnail'].includes(".jpg") || article['thumbnail'].includes(".jpeg") || article['thumbnail'].includes(".png")) {
+                          result['thumbnail'] = article['thumbnail'];
+                      }
+                  }
+              }
             }
-
 
             return result;
         });
