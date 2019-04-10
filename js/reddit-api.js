@@ -21,8 +21,9 @@ function getRedditPost() {
                 title: article['title']
             };
 
-            if (article['domain'] == "youtube" || article['domain'] == "youtu.be" || article['domain'] == "youtube.com") {
+            if (article['domain'] == "youtube" || article['domain'] == "youtu.be" || article['domain'] == "youtube.com" || article['domain'] == "gfycat.com") {
                 result['videoUrl'] = article['url'];
+                result['thumbnail'] = article['media']['oembed']['thumbnail_url'];
             }
 
             if (article['thumbnail'] && article['thumbnail'] != 'self') {
@@ -39,8 +40,8 @@ function getRedditPost() {
                         result['thumbnail'] = article['thumbnail'];
                     }
                 }
-
             }
+
 
             return result;
         });
