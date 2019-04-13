@@ -5,7 +5,7 @@ async function searchYoutubePost() {
   if(s){
     keyword = s;
   }
-    return await fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCGyjORc_M0ohtmEdaqUim3xqhZAy8ExHs&part=snippet&q=" + keyword + "&type=video", {
+    return await fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCGyjORc_M0ohtmEdaqUim3xqhZAy8ExHs&part=snippet&q=" + keyword + "&type=video&maxResults=10", {
         mode: 'cors'
     }).then(function (resp) {
         return resp.json();

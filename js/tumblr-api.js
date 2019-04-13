@@ -5,7 +5,7 @@ function getThumblrPost() {
   if(s){
     keyword = s;
   }
-    return fetch("https://api.tumblr.com/v2/tagged?api_key=KVrTO2UhQec9ClfuX4OTa2t2ERTU1a9bMK5hVxQj6GAk1MedAZ&tag=" + keyword + "&limit=5&type=photo", {
+    return fetch("https://api.tumblr.com/v2/tagged?api_key=KVrTO2UhQec9ClfuX4OTa2t2ERTU1a9bMK5hVxQj6GAk1MedAZ&tag=" + keyword + "&limit=10&type=photo", {
         mode: 'cors'
     }).then(function (resp) {
         return resp.json();

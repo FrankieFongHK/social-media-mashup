@@ -5,7 +5,7 @@ function getRedditPost() {
     if (s) {
         keyword = s;
     }
-    return fetch("https://www.reddit.com/search.json?q=" + keyword + "&sort=new&limit=5", {
+    return fetch("https://www.reddit.com/search.json?q=" + keyword + "&sort=new&limit=10", {
         mode: 'cors'
     }).then(function(resp) {
         return resp.json();
