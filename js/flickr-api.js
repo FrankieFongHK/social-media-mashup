@@ -1,5 +1,5 @@
 async function getRecentPosts(){
-	var keyword = "food";
+	var keyword = "animals";
 	var url = new URL(location.href);
 	var s = url.searchParams.get("s");
 	if(s){
