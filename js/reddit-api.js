@@ -34,7 +34,9 @@ function getRedditPost() {
                       if (resolutions.length > 1) {
                           result['thumbnail'] = resolutions[parseInt(resolutions.length / 2) - 1]['url'];
                       } else {
-                          result['thumbnail'] = resolutions[0]['url'];
+                          if(resolutions[0]['url']){
+                              result['thumbnail'] = resolutions[0]['url'];
+                          }
                       }
                   } else {
                       if (article['thumbnail'].includes(".jpg") || article['thumbnail'].includes(".jpeg") || article['thumbnail'].includes(".png")) {
