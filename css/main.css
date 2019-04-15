@@ -118,7 +118,7 @@ h1, .h01 {
 
 @media only screen and (max-width: 600px) {
     h1, .h01 {
-        font-size: 2.2rem;
+        font-size: 1.9rem;
         letter-spacing: -.07rem;
     }
 }
@@ -1596,7 +1596,7 @@ header a {
 header .logo {
   position: absolute;
     display: table;
-    max-width: 69%;
+    max-width: 64%;
     left: 35px;
     top: 6px;
     z-index: 601;

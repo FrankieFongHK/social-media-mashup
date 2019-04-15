@@ -1,11 +1,11 @@
 async function searchYoutubePost() {
-  var keyword = "food";
+  var keyword = "animals";
   var url = new URL(location.href);
   var s = url.searchParams.get("s");
   if(s){
     keyword = s;
   }
-    return await fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCGyjORc_M0ohtmEdaqUim3xqhZAy8ExHs&part=snippet&q=" + keyword + "&type=video", {
+    return await fetch("https://www.googleapis.com/youtube/v3/search?key=AIzaSyCGyjORc_M0ohtmEdaqUim3xqhZAy8ExHs&part=snippet&q=" + keyword + "&type=video&maxResults=10", {
         mode: 'cors'
     }).then(function (resp) {
         return resp.json();
@@ -22,7 +22,7 @@ async function searchYoutubePost() {
                     height: thumbnail['height'],
                     width: thumbnail['width'],
                     url: 'https://www.youtube.com/watch?v=' + article['id']['videoId'],
-                    post_date: info['publishedAt']
+                    post_date: Math.round(new Date(info['publishedAt']).getTime())
                 };
             });
         }
